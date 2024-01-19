@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+#[ORM\InheritanceType("SINGLE_TABLE")]
+#[ORM\DiscriminatorColumn(name:"type")]
+#[ORM\DiscriminatorMap(['use' => 'User', 'cli' => 'Client', 'ven' => 'Vendeur'])]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
