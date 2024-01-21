@@ -16,10 +16,11 @@ class LigneCommande
     #[ORM\Column(nullable: true)]
     private ?int $qteCommandee = null;
 
-    #[ORM\ManyToOne(inversedBy: 'ligneCommandes', cascade: ['persist'])]
+    #[ORM\ManyToOne(inversedBy: 'ligneCommandes',cascade: ['persist'])]
+    
     private ?Produit $produit = null;
 
-    #[ORM\ManyToOne(inversedBy: 'ligneCommandes')]
+    #[ORM\ManyToOne(inversedBy: 'ligneCommandes', cascade: ['persist'])]
     private ?Commande $commande = null;
 
     public function getId(): ?int

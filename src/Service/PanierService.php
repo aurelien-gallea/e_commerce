@@ -54,8 +54,12 @@ class PanierService {
 
         foreach ($data as $d) {
             $ligneCmd = new LigneCommande();
-            $ligneCmd->setProduit($d['produit']);
+            //recuperer le bon produit associé à l'id 
+            $produit = $this->em->getRepository(Produit::class)->find($d['produit']->getId());
+            $ligneCmd->setProduit($produit);
             $ligneCmd->setQteCommandee($d['quantite']);
+            //décrementer la quantité du stock
+            $produit->setQteStock( $produit->getQteStock() -$d['quantite']);
             $ligneCmd->setCommande($commande);
             
             $this->em->persist($ligneCmd);

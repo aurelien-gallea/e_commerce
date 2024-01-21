@@ -24,7 +24,7 @@ class Commande
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     private ?Client $client = null;
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: LigneCommande::class)]
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: LigneCommande::class, cascade: ['persist'])]
     private Collection $ligneCommandes;
 
     public function __construct()

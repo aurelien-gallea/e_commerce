@@ -10,10 +10,14 @@
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
-
+    {% if panier %}
     {% for key, p in panier %}
     <p>{{ p.produit.designation }} quantité : {{ p.quantite }} <a href="{{ path('app_panier_delete', {'key': key}) }}">Supprimer</a></p>
     {% endfor %}
+
+        <a class="btn btn-secondary" href="{{path('app_commande_confirm')}}">Valider la commande</a>
+    {% else %}
+    <p>Votre panier est vide</p>
+    {% endif %} 
 </div>
-<a class="btn btn-secondary" href="{{path('app_commande_confirm')}}">Valider la commande</a>
 {% endblock %}
