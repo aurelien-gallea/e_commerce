@@ -16,8 +16,8 @@ class Commande
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $dateCommande = null;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private  $dateCommande = null;
 
    
 
